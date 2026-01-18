@@ -163,6 +163,7 @@ Este projeto é livre para ser usado e modificado. Créditos são apreciados! �
 
 ---
 
-**Desenvolvido com ❤️ e muito código**
+**Desenvolvido com ❤️ e muito código por Jhon Wictor**
 
 *Última atualização: Janeiro 2025*
+
