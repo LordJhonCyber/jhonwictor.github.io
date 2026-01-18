@@ -1,0 +1,485 @@
+<!-- ====================================================
+     EXEMPLOS DE EXTENSÕES PARA O PORTFÓLIO
+     ==================================================== -->
+
+<!-- 1. ADICIONANDO MÚSICA DE FUNDO OPCIONAL -->
+<div id="audio-controller" class="audio-controller">
+    <button id="music-toggle" class="music-toggle" title="Ativar/Desativar Música">
+        🔊
+    </button>
+    <audio id="background-music" loop>
+        <source src="assets/music/background.mp3" type="audio/mpeg">
+    </audio>
+</div>
+
+<style>
+    .audio-controller {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+        z-index: 999;
+    }
+
+    .music-toggle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00d9ff, #ff006e);
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+        transition: all 0.3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .music-toggle:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 217, 255, 0.8);
+    }
+
+    .music-toggle.playing {
+        animation: pulse 1.5s infinite;
+    }
+</style>
+
+<script>
+    const musicToggle = document.getElementById('music-toggle');
+    const backgroundMusic = document.getElementById('background-music');
+
+    musicToggle.addEventListener('click', () => {
+        if (backgroundMusic.paused) {
+            backgroundMusic.play();
+            musicToggle.classList.add('playing');
+            musicToggle.textContent = '🔉';
+            localStorage.setItem('musicEnabled', 'true');
+        } else {
+            backgroundMusic.pause();
+            musicToggle.classList.remove('playing');
+            musicToggle.textContent = '🔊';
+            localStorage.setItem('musicEnabled', 'false');
+        }
+    });
+
+    // Restaurar preferência do usuário
+    if (localStorage.getItem('musicEnabled') === 'true') {
+        backgroundMusic.play();
+        musicToggle.classList.add('playing');
+        musicToggle.textContent = '🔉';
+    }
+</script>
+
+<!-- ===================================================
+     2. ADICIONAR MODO NOTURNO / TEMA CLARO
+     ==================================================== -->
+<div id="theme-toggle" class="theme-toggle">
+    <button id="theme-btn" title="Trocar Tema">
+        🌙
+    </button>
+</div>
+
+<style>
+    .theme-toggle {
+        position: fixed;
+        bottom: 90px;
+        right: 30px;
+        z-index: 999;
+    }
+
+    #theme-btn {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #00ff41, #00d9ff);
+        color: #0a0e27;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(0, 255, 65, 0.5);
+        transition: all 0.3s;
+    }
+
+    #theme-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 30px rgba(0, 255, 65, 0.8);
+    }
+
+    body.light-theme {
+        --dark-bg: #f5f5f5;
+        --dark-bg-2: #e0e0e0;
+        --text-light: #1a1a1a;
+        --text-secondary: #666;
+    }
+
+    body.light-theme .navbar {
+        background: linear-gradient(90deg, #f5f5f5, #e0e0e0);
+        border-bottom-color: #ff006e;
+    }
+</style>
+
+<script>
+    const themeBtn = document.getElementById('theme-btn');
+
+    themeBtn.addEventListener('click', () => {
+        document.body.classList.toggle('light-theme');
+        
+        const isLight = document.body.classList.contains('light-theme');
+        themeBtn.textContent = isLight ? '☀️' : '🌙';
+        localStorage.setItem('theme', isLight ? 'light' : 'dark');
+    });
+
+    // Restaurar tema
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'light') {
+        document.body.classList.add('light-theme');
+        themeBtn.textContent = '☀️';
+    }
+</script>
+
+<!-- ===================================================
+     3. ADICIONAR BOTÃO DE VOLTAR AO TOPO
+     ==================================================== -->
+<button id="scroll-to-top" class="scroll-to-top" title="Voltar ao Topo">
+    ↑
+</button>
+
+<style>
+    .scroll-to-top {
+        position: fixed;
+        bottom: 150px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #ff006e, #00d9ff);
+        color: white;
+        border: none;
+        font-size: 24px;
+        cursor: pointer;
+        box-shadow: 0 0 20px rgba(255, 0, 110, 0.5);
+        transition: all 0.3s;
+        display: none;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .scroll-to-top.show {
+        display: flex;
+        animation: slideInRight 0.3s ease-out;
+    }
+
+    .scroll-to-top:hover {
+        transform: scale(1.1) translateY(-5px);
+        box-shadow: 0 0 30px rgba(255, 0, 110, 0.8);
+    }
+</style>
+
+<script>
+    const scrollToTopBtn = document.getElementById('scroll-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 300) {
+            scrollToTopBtn.classList.add('show');
+        } else {
+            scrollToTopBtn.classList.remove('show');
+        }
+    });
+
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>
+
+<!-- ===================================================
+     4. ANIMAÇÃO DE CÍRCULOS FLUTUANTES DE FUNDO
+     ==================================================== -->
+<div class="floating-circles">
+    <div class="circle circle-1"></div>
+    <div class="circle circle-2"></div>
+    <div class="circle circle-3"></div>
+</div>
+
+<style>
+    .floating-circles {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        pointer-events: none;
+    }
+
+    .circle {
+        position: absolute;
+        border: 1px solid rgba(0, 217, 255, 0.1);
+        border-radius: 50%;
+        animation: float 8s infinite;
+    }
+
+    .circle-1 {
+        width: 300px;
+        height: 300px;
+        top: -150px;
+        left: -150px;
+        animation-delay: 0s;
+    }
+
+    .circle-2 {
+        width: 200px;
+        height: 200px;
+        bottom: -100px;
+        right: -100px;
+        animation-delay: 2s;
+    }
+
+    .circle-3 {
+        width: 250px;
+        height: 250px;
+        top: 50%;
+        right: -125px;
+        animation-delay: 4s;
+    }
+
+    @keyframes float {
+        0%, 100% { transform: translateY(0) translateX(0); }
+        25% { transform: translateY(20px) translateX(10px); }
+        50% { transform: translateY(0) translateX(20px); }
+        75% { transform: translateY(-20px) translateX(10px); }
+    }
+</style>
+
+<!-- ===================================================
+     5. NOTIFICAÇÃO DE VISITA (TOAST)
+     ==================================================== -->
+<script>
+    function showNotification(message, type = 'info') {
+        const notification = document.createElement('div');
+        notification.className = `notification notification-${type}`;
+        notification.textContent = message;
+        notification.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: ${type === 'success' ? '#00ff41' : type === 'error' ? '#ff006e' : '#00d9ff'};
+            color: ${type === 'success' ? '#0a0e27' : 'white'};
+            padding: 15px 25px;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 217, 255, 0.5);
+            animation: slideInRight 0.3s ease-out;
+            z-index: 10000;
+            font-weight: bold;
+        `;
+
+        document.body.appendChild(notification);
+
+        setTimeout(() => {
+            notification.style.animation = 'slideOutRight 0.3s ease-out forwards';
+            setTimeout(() => notification.remove(), 300);
+        }, 3000);
+    }
+
+    // Exemplo de uso
+    // showNotification('Bem-vindo ao meu portfólio!', 'success');
+</script>
+
+<!-- ===================================================
+     6. CONTADOR DE VISITAS
+     ==================================================== -->
+<div class="visitor-counter" style="
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    background: rgba(0, 217, 255, 0.1);
+    border: 1px solid #00d9ff;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+    color: #00d9ff;
+    z-index: 999;
+">
+    Visitantes: <span id="visitor-count">0</span>
+</div>
+
+<script>
+    // Incrementar contador de visitas usando localStorage
+    function updateVisitorCount() {
+        let count = localStorage.getItem('visitorCount') || 0;
+        count = parseInt(count) + 1;
+        localStorage.setItem('visitorCount', count);
+        document.getElementById('visitor-count').textContent = count;
+    }
+
+    updateVisitorCount();
+</script>
+
+<!-- ===================================================
+     7. CAMPO DE BUSCA / NAVEGAÇÃO RÁPIDA
+     ==================================================== -->
+<div id="search-widget" class="search-widget" style="
+    position: fixed;
+    top: 100px;
+    right: 30px;
+    z-index: 999;
+">
+    <input type="text" 
+        id="quick-search" 
+        placeholder="🔍 Buscar..."
+        style="
+            width: 200px;
+            padding: 10px;
+            background: rgba(0, 217, 255, 0.1);
+            border: 1px solid #00d9ff;
+            color: #00d9ff;
+            border-radius: 5px;
+            outline: none;
+            transition: all 0.3s;
+        "
+    >
+    <div id="search-results" style="
+        position: absolute;
+        top: 100%;
+        right: 0;
+        width: 100%;
+        background: #16213e;
+        border: 1px solid #00d9ff;
+        border-radius: 5px;
+        margin-top: 10px;
+        display: none;
+        z-index: 1000;
+    "></div>
+</div>
+
+<script>
+    const quickSearch = document.getElementById('quick-search');
+    const searchResults = document.getElementById('search-results');
+
+    quickSearch.addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        
+        if (query.length === 0) {
+            searchResults.style.display = 'none';
+            return;
+        }
+
+        const sections = ['home', 'about', 'projects', 'contact'];
+        const matches = sections.filter(s => s.includes(query));
+
+        if (matches.length > 0) {
+            searchResults.innerHTML = matches.map(m => 
+                `<div style="padding: 10px; cursor: pointer; color: #00d9ff;" 
+                    onclick="scrollToSection('#${m}')">${m.toUpperCase()}</div>`
+            ).join('');
+            searchResults.style.display = 'block';
+        } else {
+            searchResults.innerHTML = '<div style="padding: 10px; color: #aaa;">Nenhum resultado</div>';
+            searchResults.style.display = 'block';
+        }
+    });
+</script>
+
+<!-- ===================================================
+     8. BOTÃO PARA COMPARTILHAR NAS REDES SOCIAIS
+     ==================================================== -->
+<div class="share-buttons" style="
+    position: fixed;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    z-index: 999;
+">
+    <a href="https://twitter.com/intent/tweet?url=SEU_URL&text=Confira meu portfólio gamer!" 
+       target="_blank"
+       style="
+           width: 50px;
+           height: 50px;
+           background: linear-gradient(135deg, #00d9ff, #ff006e);
+           color: white;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-decoration: none;
+           font-weight: bold;
+           box-shadow: 0 0 15px rgba(0, 217, 255, 0.3);
+           transition: all 0.3s;
+       "
+       onmouseover="this.style.boxShadow='0 0 25px rgba(0, 217, 255, 0.8)'; this.style.transform='scale(1.1)';"
+       onmouseout="this.style.boxShadow='0 0 15px rgba(0, 217, 255, 0.3)'; this.style.transform='scale(1)';"
+    >
+        𝕏
+    </a>
+    
+    <a href="https://www.linkedin.com/sharing/share-offsite/?url=SEU_URL" 
+       target="_blank"
+       style="
+           width: 50px;
+           height: 50px;
+           background: linear-gradient(135deg, #00ff41, #00d9ff);
+           color: #0a0e27;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-decoration: none;
+           font-weight: bold;
+           font-size: 20px;
+           box-shadow: 0 0 15px rgba(0, 255, 65, 0.3);
+           transition: all 0.3s;
+       "
+       onmouseover="this.style.boxShadow='0 0 25px rgba(0, 255, 65, 0.8)'; this.style.transform='scale(1.1)';"
+       onmouseout="this.style.boxShadow='0 0 15px rgba(0, 255, 65, 0.3)'; this.style.transform='scale(1)';"
+    >
+        in
+    </a>
+
+    <a href="https://www.facebook.com/sharer/sharer.php?u=SEU_URL" 
+       target="_blank"
+       style="
+           width: 50px;
+           height: 50px;
+           background: linear-gradient(135deg, #ff006e, #00d9ff);
+           color: white;
+           border-radius: 50%;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-decoration: none;
+           font-weight: bold;
+           box-shadow: 0 0 15px rgba(255, 0, 110, 0.3);
+           transition: all 0.3s;
+       "
+       onmouseover="this.style.boxShadow='0 0 25px rgba(255, 0, 110, 0.8)'; this.style.transform='scale(1.1)';"
+       onmouseout="this.style.boxShadow='0 0 15px rgba(255, 0, 110, 0.3)'; this.style.transform='scale(1)';"
+    >
+        f
+    </a>
+</div>
+
+<!-- ===================================================
+     INSTRUÇÕES DE USO
+     ==================================================== -->
+<!--
+1. ÁUDIO: Adicione um arquivo MP3 em assets/music/background.mp3
+
+2. TEMA CLARO: Estará pronto ao clicar no botão 🌙
+
+3. VISITANTES: Usa localStorage (só seu computador verá o aumento)
+
+4. COMPARTILHAMENTO: Substitua "SEU_URL" pelo URL do seu portfólio
+
+5. NOTIFICAÇÕES: Use showNotification('Mensagem', 'success|error|info')
+
+6. BUSCA: Funciona com as seções já definidas (home, about, projects, contact)
+
+7. TODOS OS BOTÕES: Posicionados de forma discreta mas acessível
+-->

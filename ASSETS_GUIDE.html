@@ -1,0 +1,342 @@
+<!-- 
+    GUIA PARA ADICIONAR GIFs E ANIMAÇÕES AO SEU PORTFÓLIO
+    ====================================================
+-->
+
+<!-- 
+    1. ADICIONAR GIF NA SEÇÃO HERO
+    Substitua o código da seção hero com:
+-->
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1 class="glitch" data-text="WELCOME TO MY GAME">WELCOME TO MY GAME</h1>
+        <p class="typing-text">Desenvolvedor criativo | Designer | Inovador</p>
+        <div class="crt-effect"></div>
+        <button class="btn-glow" onclick="scrollToSection('#projects')">INICIAR AVENTURA</button>
+    </div>
+    <div class="player-character">
+        <!-- Usar GIF ao invés de imagem estática -->
+        <img src="assets/character-animation.gif" alt="Personagem Animado" class="character-img">
+        <!-- Ou combine imagem estática com um GIF de fundo -->
+        <img src="Imagens/profile01.jfif" alt="Personagem" class="character-img">
+        <div class="health-bar">
+            <div class="health-fill"></div>
+            <span class="health-text">HP 100/100</span>
+        </div>
+    </div>
+</section>
+
+<!-- 
+    2. ADICIONAR GIFs NOS PROJETOS
+    Substitua o conteúdo da section projects com:
+-->
+<section id="projects" class="projects">
+    <div class="container">
+        <h2 class="section-title neon-text">{ PROJETOS }</h2>
+        <div class="projects-grid">
+            
+            <!-- PROJETO COM GIF -->
+            <div class="project-card">
+                <div class="project-image">
+                    <!-- GIF animado do projeto -->
+                    <img src="assets/project1-demo.gif" alt="Demo do Projeto 1" style="width: 100%; height: 100%; object-fit: cover;">
+                    <span class="project-level">LEVEL 01</span>
+                </div>
+                <div class="project-info">
+                    <h3>Jogo Interativo</h3>
+                    <p>Um jogo web desenvolvido com HTML5 Canvas e JavaScript puro. Apresenta animações fluidas e efeitos sonoros.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML5</span>
+                        <span class="tag">JavaScript</span>
+                        <span class="tag">Canvas</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJETO COM VÍDEO (ALTERNATIVA) -->
+            <div class="project-card">
+                <div class="project-image">
+                    <!-- Vídeo em loop -->
+                    <video autoplay muted loop style="width: 100%; height: 100%; object-fit: cover;">
+                        <source src="assets/project2-demo.mp4" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                    <span class="project-level">LEVEL 02</span>
+                </div>
+                <div class="project-info">
+                    <h3>Dashboard Dinâmico</h3>
+                    <p>Dashboard interativo com gráficos em tempo real, tema escuro e design responsivo.</p>
+                    <div class="project-tags">
+                        <span class="tag">React</span>
+                        <span class="tag">Charts</span>
+                        <span class="tag">Responsivo</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PROJETO COM SCREENSHOT + LINK -->
+            <div class="project-card">
+                <div class="project-image">
+                    <img src="assets/project3-screenshot.png" alt="Screenshot do Projeto 3" style="width: 100%; height: 100%; object-fit: cover;">
+                    <span class="project-level">LEVEL 03</span>
+                </div>
+                <div class="project-info">
+                    <h3>E-commerce Moderno</h3>
+                    <p>Loja online completa com carrinho de compras, filtros avançados e checkout seguro.</p>
+                    <div class="project-tags">
+                        <span class="tag">HTML</span>
+                        <span class="tag">CSS</span>
+                        <span class="tag">JavaScript</span>
+                    </div>
+                    <a href="https://seu-link-aqui.com" target="_blank" class="tag" style="display: inline-block; margin-top: 10px;">Ver ao Vivo →</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- 
+    3. ESTRUTURA DE PASTAS RECOMENDADA PARA ASSETS
+    
+    Site Jhon/
+    ├── index.html
+    ├── style.css
+    ├── script.js
+    ├── README.md
+    ├── Imagens/
+    │   ├── profile01.jfif
+    │   ├── profile-background.png
+    │   └── logo.png
+    ├── assets/
+    │   ├── gifs/
+    │   │   ├── character-animation.gif
+    │   │   ├── loading-animation.gif
+    │   │   └── project-demos/
+    │   │       ├── project1-demo.gif
+    │   │       ├── project2-demo.gif
+    │   │       └── project3-demo.gif
+    │   ├── videos/
+    │   │   ├── project2-demo.mp4
+    │   │   └── background-video.mp4
+    │   └── screenshots/
+    │       ├── project3-screenshot.png
+    │       └── preview.png
+    └── docs/
+        └── ASSETS_GUIDE.html
+-->
+
+<!-- 
+    4. CSS PARA ANIMAÇÕES DE GIFs
+    Adicione ao seu style.css:
+-->
+<style>
+    /* Animar GIFs com efeito de entrada */
+    img[src*=".gif"] {
+        animation: gifLoad 0.8s ease-out;
+    }
+
+    @keyframes gifLoad {
+        from {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    /* Efeito hover em imagens de projeto */
+    .project-image img {
+        transition: transform 0.3s, filter 0.3s;
+    }
+
+    .project-card:hover .project-image img {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+    }
+
+    /* Container para GIFs com aspect ratio */
+    .gif-container {
+        position: relative;
+        width: 100%;
+        padding-bottom: 100%; /* Quadrado 1:1 */
+        overflow: hidden;
+        border-radius: 10px;
+        background: var(--dark-bg-2);
+    }
+
+    .gif-container img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    /* Animação para vídeos */
+    video {
+        border-radius: 10px;
+    }
+
+    /* Efeito de frame ao redor de GIFs */
+    .gif-frame {
+        border: 2px solid var(--primary);
+        box-shadow: 0 0 15px rgba(0, 217, 255, 0.3), inset 0 0 15px rgba(0, 217, 255, 0.1);
+        border-radius: 10px;
+        padding: 5px;
+    }
+</style>
+
+<!-- 
+    5. JAVASCRIPT PARA LAZY LOADING DE GIFs
+    Adicione ao seu script.js:
+-->
+<script>
+    // Lazy loading para GIFs (carregar apenas quando visível)
+    document.addEventListener('DOMContentLoaded', () => {
+        const images = document.querySelectorAll('img[data-src]');
+        
+        const imageObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const img = entry.target;
+                    img.src = img.dataset.src;
+                    img.removeAttribute('data-src');
+                    observer.unobserve(img);
+                }
+            });
+        });
+        
+        images.forEach(img => imageObserver.observe(img));
+    });
+
+    // Preload de GIFs importantes
+    function preloadGif(url) {
+        const img = new Image();
+        img.src = url;
+    }
+
+    // Pré-carregar GIFs importantes
+    preloadGif('assets/gifs/character-animation.gif');
+    preloadGif('assets/gifs/project-demos/project1-demo.gif');
+</script>
+
+<!-- 
+    6. COMO OBTER GIFs DE QUALIDADE
+    
+    Opção 1: Criar com FFMPEG
+    ffmpeg -i video.mp4 -vf "fps=10,scale=320:-1" -c:v pam -f image2pipe - | convert -delay 10 - output.gif
+    
+    Opção 2: Usar Ferramentas Online
+    - ezgif.com (Converter MP4 para GIF)
+    - gifmaker.me
+    - convertio.co
+    
+    Opção 3: Baixar GIFs Prontos
+    - giphy.com
+    - tenor.com
+    - pixabay.com/pt/gifs (Creative Commons)
+    
+    Opção 4: Criar Animações CSS
+    - Mais leve que GIFs
+    - Totalmente customizável
+-->
+
+<!-- 
+    7. EXEMPLO DE GALERIA COM MÚLTIPLOS GIFs
+-->
+<section class="gallery">
+    <div class="container">
+        <h2 class="section-title neon-text">{ GALERIA }</h2>
+        <div class="gallery-grid">
+            
+            <div class="gallery-item">
+                <img src="assets/gifs/demo1.gif" alt="Demo 1" class="gif-frame">
+                <p class="gallery-caption">Animação de Entrada</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/gifs/demo2.gif" alt="Demo 2" class="gif-frame">
+                <p class="gallery-caption">Interação com Mouse</p>
+            </div>
+
+            <div class="gallery-item">
+                <img src="assets/gifs/demo3.gif" alt="Demo 3" class="gif-frame">
+                <p class="gallery-caption">Efeitos Visuais</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<style>
+    .gallery-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+    }
+
+    .gallery-item {
+        text-align: center;
+    }
+
+    .gallery-caption {
+        margin-top: 15px;
+        color: var(--primary);
+        font-weight: bold;
+    }
+</style>
+
+<!-- 
+    8. OTIMIZAÇÃO DE GIFs PARA WEB
+    
+    - Comprimir com TinyGIF (tinygif.app)
+    - Redimensionar para tamanho necessário
+    - Usar máximo 10 FPS para GIFs grandes
+    - Converter para WebP quando possível (melhor compressão)
+    - Usar lazy loading para GIFs abaixo do fold
+    
+    Exemplo de WebP (fallback para GIF):
+    <picture>
+        <source srcset="animation.webp" type="image/webp">
+        <img src="animation.gif" alt="Animation">
+    </picture>
+-->
+
+<!-- 
+    9. ADICIONAR LOADING ANIMATION DURANTE CARREGAMENTO
+-->
+<div class="loading-spinner">
+    <img src="assets/gifs/loading-animation.gif" alt="Carregando...">
+</div>
+
+<style>
+    .loading-spinner {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 9999;
+    }
+
+    .loading-spinner.active {
+        display: block;
+    }
+</style>
+
+<!-- 
+    10. DICAS FINAIS
+    
+    ✓ Use GIFs para demonstrações de projetos
+    ✓ Mantenha tamanho abaixo de 2MB por GIF
+    ✓ Use lazy loading para melhor performance
+    ✓ Combine com animações CSS para menos peso
+    ✓ Teste em diferentes navegadores
+    ✓ Use alt text descritivo
+    ✓ Considere vídeos para animações complexas
+    ✓ Adicione legendas/descrições aos GIFs
+-->

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfólio - Jhon | Game Developer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Efeito de fundo -->
+    <div class="background-stars"></div>
+    
+    <!-- Navegação -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo neon-text">
+                <span class="bracket">&lt;</span>JHON WICTOR<span class="bracket">/&gt;</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home" class="nav-link active">HOME</a></li>
+                <li><a href="#about" class="nav-link">SOBRE</a></li>
+                <li><a href="#projects" class="nav-link">PROJETOS</a></li>
+                <li><a href="#contact" class="nav-link">CONTATO</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1 class="glitch" data-text="WELCOME TO MY GAME">WELCOME TO MY GAME</h1>
+            <p class="typing-text">Desenvolvedor criativo | Designer | Inovador</p>
+            <div class="crt-effect"></div>
+            <button class="btn-glow" onclick="scrollToSection('#projects')">INICIAR AVENTURA</button>
+        </div>
+        <div class="player-character">
+            <img src="Imagens/profile01.jfif" alt="Personagem" class="character-img">
+            <div class="health-bar">
+                <div class="health-fill"></div>
+                <span class="health-text">HP 100/100</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title neon-text">{ SOBRE MIM }</h2>
+            <div class="about-grid">
+                <div class="about-card card-glow">
+                    <div class="card-icon">💻</div>
+                    <h3>Dev Full Stack</h3>
+                    <p>Criando experiências digitais incríveis com HTML, CSS, JavaScript e muito mais.</p>
+                </div>
+                <div class="about-card card-glow">
+                    <div class="card-icon">🎮</div>
+                    <h3>Game Designer</h3>
+                    <p>Apaixonado por criar interfaces e experiências com temática gamer.</p>
+                </div>
+                <div class="about-card card-glow">
+                    <div class="card-icon">✨</div>
+                    <h3>UI/UX Creator</h3>
+                    <p>Designs modernos, inovadores e focados na experiência do usuário.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section class="skills">
+        <div class="container">
+            <h2 class="section-title neon-text">{ HABILIDADES }</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <div class="skill-name">HTML5</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%; animation-delay: 0s;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">CSS3</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%; animation-delay: 0.1s;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">JavaScript</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%; animation-delay: 0.2s;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Design</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%; animation-delay: 0.3s;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Animações</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%; animation-delay: 0.4s;"></div>
+                    </div>
+                </div>
+                <div class="skill-item">
+                    <div class="skill-name">Responsivo</div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 93%; animation-delay: 0.5s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title neon-text">{ PROJETOS }</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="pixel-art">■■■■■</div>
+                        <span class="project-level">LEVEL 01</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Projeto 1</h3>
+                        <p>Descrição do seu projeto incrível com tecnologias modernas.</p>
+                        <div class="project-tags">
+                            <span class="tag">HTML</span>
+                            <span class="tag">CSS</span>
+                            <span class="tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="pixel-art">■■■■■</div>
+                        <span class="project-level">LEVEL 02</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Projeto 2</h3>
+                        <p>Outro projeto impressionante que demonstra suas habilidades.</p>
+                        <div class="project-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">API</span>
+                            <span class="tag">Design</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="pixel-art">■■■■■</div>
+                        <span class="project-level">LEVEL 03</span>
+                    </div>
+                    <div class="project-info">
+                        <h3>Projeto 3</h3>
+                        <p>Portfólio interativo com animações e efeitos modernos.</p>
+                        <div class="project-tags">
+                            <span class="tag">Animações</span>
+                            <span class="tag">WebGL</span>
+                            <span class="tag">UI/UX</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Game Stats Section -->
+    <section class="game-stats">
+        <div class="container">
+            <h2 class="section-title neon-text">{ ESTATÍSTICAS }</h2>
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <div class="stat-number" data-target="50">0</div>
+                    <div class="stat-label">Projetos</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="100">0</div>
+                    <div class="stat-label">Clientes</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="1000">0</div>
+                    <div class="stat-label">Horas Código</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number" data-target="99">0</div>
+                    <div class="stat-label">Satisfação %</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title neon-text">{ ENTRE EM CONTATO }</h2>
+            <form class="contact-form">
+                <div class="form-group">
+                    <input type="text" placeholder="Seu Nome" required>
+                    <div class="input-glow"></div>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Seu Email" required>
+                    <div class="input-glow"></div>
+                </div>
+                <div class="form-group">
+                    <textarea placeholder="Sua Mensagem" rows="5" required></textarea>
+                    <div class="input-glow"></div>
+                </div>
+                <button type="submit" class="btn-glow">ENVIAR MENSAGEM</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://github.com/LordJhonCyber" target="_blank" class="social-icon">GitHub</a>
+                <a href="https://www.instagram.com/wictor_jhon/" target="_blank" class="social-icon">Instagram</a>
+                <a href="https://www.linkedin.com/in/jhon-wictor/" target="_blank" class="social-icon">LinkedIn</a>
+                <a href="https://twitter.com/refugio_jhon" target="_blank" class="social-icon">Twitter</a>
+                <a href="#" class="social-icon" title="jhonkill0267">Discord</a>
+            </div>
+            <p>&copy; 2025 Jhon Wictor - Todos os direitos reservados. Game On! 🎮</p>
+        </div>
+    </footer>
+
+    <!-- Cursor customizado -->
+    <div class="cursor"></div>
+    <div class="cursor-follower"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
